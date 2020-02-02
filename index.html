@@ -145,14 +145,18 @@
 
     var clock = document.getElementById ('currentDay');
 
-      setInterval (() => {
-
-        var now = moment();
-        var userReader = now.format ("dddd, MMMM , YYYY, h:mm:ss a");
+    function timeUpdate (){
+     
+        var userReader = moment().format ("dddd, MMMM , YYYY, h:mm:ss a");
 
         clock.textContent=userReader;
 
-      }, 1000);
+
+    }
+
+      setInterval (timeUpdate,1000);
+
+    timeUpdate();
     </script>
     
 
