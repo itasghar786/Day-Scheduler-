@@ -45,95 +45,82 @@
       
       <div class="row time-block">
           <div class="col-md-1 hour">6am</div>
-          <div class="col-md-10"> <textarea class="description"></textarea></div>
+          <div class="col-md-10"> <textarea id="6am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">7am</div>
-          <div class="col-md-10"> <textarea class="description"></textarea></div>
+          <div class="col-md-10"> <textarea id="7am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">8am</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="8am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">9am</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="9am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">10am</div>
-          <div class="col-md-10"> <textarea class="description"></textarea></div>
+          <div class="col-md-10"> <textarea id="10am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn ">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">11am</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="11am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn ">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">12am</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="12am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">1pm</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="1pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">2pm</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="2pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">3pm</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="3pm">value</textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
       <div class="row time-block">
           <div class="col-md-1 hour">4pm</div>
-          <div class="col-md-10"> <textarea></textarea></div>
+          <div class="col-md-10"> <textarea id="4pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-     
   
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -153,9 +140,28 @@
 
 
     }
+    
 
       setInterval (timeUpdate,1000);
 
+      $(".saveBtn").on("click",function(savingData)
+      {
+        var value= $(this).parent().siblings(".col-md-10").children().val()
+        console.log(value);
+
+        var timesave = $(this).parent().siblings(".col-md-10").children().attr("id");
+        localStorage.setItem(timesave,value);
+      });
+      
+        function loadsavedata (){
+          var textareas = $("textarea")
+          for(var i = 0; i< textareas.length; i++){
+            var id = textareas[i].id;
+            $("#"+id).val(localStorage.getItem(id))
+           // console.log(i);
+          }
+        }
+        loadsavedata();
     timeUpdate();
     </script>
     
