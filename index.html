@@ -13,10 +13,12 @@
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
+      />
+      
     
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
-      rel="stylesheet"
+    <link 
+    href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" 
+    rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css"/>
     <title>Work Day Scheduler</title>
@@ -43,77 +45,77 @@
           
 
       
-      <div class="row time-block">
+      <div class="row time-block" data-time="6"> 
           <div class="col-md-1 hour">6am</div>
           <div class="col-md-10"> <textarea id="6am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="7">
           <div class="col-md-1 hour">7am</div>
           <div class="col-md-10"> <textarea id="7am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="8">
           <div class="col-md-1 hour">8am</div>
           <div class="col-md-10"> <textarea id="8am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="9">
           <div class="col-md-1 hour">9am</div>
           <div class="col-md-10"> <textarea id="9am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="10">
           <div class="col-md-1 hour">10am</div>
           <div class="col-md-10"> <textarea id="10am" class="description"></textarea></div>
           <div class="col-md-1"><button class="saveBtn ">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="11">
           <div class="col-md-1 hour">11am</div>
           <div class="col-md-10"> <textarea id="11am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn ">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="12">
           <div class="col-md-1 hour">12am</div>
           <div class="col-md-10"> <textarea id="12am"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="1">
           <div class="col-md-1 hour">1pm</div>
           <div class="col-md-10"> <textarea id="1pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="2">
           <div class="col-md-1 hour">2pm</div>
           <div class="col-md-10"> <textarea id="2pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="3">
           <div class="col-md-1 hour">3pm</div>
           <div class="col-md-10"> <textarea id="3pm">value</textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
       
       </div>
 
-      <div class="row time-block">
+      <div class="row time-block" data-time="4">
           <div class="col-md-1 hour">4pm</div>
           <div class="col-md-10"> <textarea id="4pm"></textarea></div>
           <div class="col-md-1"><button class="saveBtn">Submit</button></div>
@@ -140,9 +142,26 @@
 
 
     }
-    
+    setInterval (timeUpdate,1000);
+    timeUpdate();
+    console.log(moment().hour());
+    $(".time-block").each(function(i, item){
 
-      setInterval (timeUpdate,1000);
+      console.log($(this).attr("data-time"))
+        var blockTime = $(this).attr("data-time");
+      if(parseInt(blockTime) < moment().hour()){
+        $(".time-block").addClass("past");
+      
+      }else if(parseInt(blockTime)= moment().hour()){
+        $(".time-block").addClass("present");
+      
+
+      }else (parseInt(blockTime) > moment().hour());{
+      $(".time-block").addClass("present");
+
+
+    }})
+      
 
       $(".saveBtn").on("click",function(savingData)
       {
@@ -162,7 +181,7 @@
           }
         }
         loadsavedata();
-    timeUpdate();
+    
     </script>
     
 
